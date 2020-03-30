@@ -16,6 +16,10 @@ import AgendaController from './controllers/AgendaController';
 
 import DisponivelController from './controllers/DisponivelController';
 
+import ExameController from './controllers/ExameController';
+
+import ExameAlunoController from './controllers/ExameAlunoController';
+
 const routes = express.Router();
 // User
 routes.post('/users', UserController.store);
@@ -53,6 +57,16 @@ routes.delete('/aulas/:id', AulaController.delete);
 
 // Agenda Instrutor
 routes.get('/Agenda/:instrutor_id', AgendaController.index);
+
+// Exames
+routes.get('/exames', ExameController.show);
+routes.get('/exames/:categoria', ExameController.index);
+routes.post('/exames', ExameController.store);
+routes.put('/exames/:id', ExameController.update);
+routes.delete('/exames/:id', ExameController.delete);
+
+// Exames de um aluno
+routes.get('/exames/aluno/:aluno_id', ExameAlunoController.index);
 
 export default routes;
 
