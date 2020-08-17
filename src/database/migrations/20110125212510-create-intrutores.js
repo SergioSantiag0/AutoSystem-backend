@@ -7,7 +7,15 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
+      cpf: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       nome: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      password_hash: {
         type: Sequelize.STRING,
         allowNull: false,
       },

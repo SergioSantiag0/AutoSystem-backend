@@ -149,7 +149,12 @@ class AlunoController {
     if (!aluno) {
       return res.status(404).json({ error: 'Aluno não encontrado' });
     }
-    await aluno.destroy();
+
+    try {
+      await aluno.destroy();
+    } catch (err) {
+      return res.json({ err: err });
+    }
     return res.json({ Success: 'Aluno excluido com sucesso' });
   }
 }

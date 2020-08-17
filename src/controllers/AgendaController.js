@@ -25,6 +25,18 @@ class AgendaController {
 
     return res.json(aulas);
   }
+
+  async delete(req, res) {
+    const { aluno_id } = req.params;
+
+    const aulas = await Aula.findAll({ where: { aluno_id } });
+
+    if (!aulas) {
+      return res.status(404).json({ error: 'Não há aulas cadastradas' });
+    }
+    await Aula.destroy({ where: { aluno_id } });
+    return res.json({ Success: 'A agenda foi limpada com sucesso' });
+  }
 }
 
 export default new AgendaController();

@@ -4,7 +4,7 @@ import Instrutor from '../models/Instrutor';
 class InstrutorController {
   async store(req, res) {
     const instrutorExists = await Instrutor.findOne({
-      where: { nome: req.body.nome },
+      where: { cpf: req.body.cpf },
     });
 
     if (instrutorExists) {
@@ -18,6 +18,8 @@ class InstrutorController {
     if (!req.body.data_curso) {
       req.body.data_curso = new Date();
     }
+
+    req.body.password = req.body.cpf;
 
     const data_carteira = zonedTimeToUtc(
       req.body.data_carteira,
@@ -36,7 +38,7 @@ class InstrutorController {
 
   async show(req, res) {
     const instrutores = await Instrutor.findAll({
-      attributes: ['id', 'nome', 'data_carteira', 'data_curso'],
+      attributes: ['id', 'nome', 'cpf', 'data_carteira', 'data_curso'],
       include: {
         association: 'veiculo',
         attributes: ['placa'],
@@ -55,7 +57,7 @@ class InstrutorController {
     const { id } = req.params;
 
     const instrutor = await Instrutor.findByPk(id, {
-      attributes: ['id', 'nome', 'data_carteira', 'data_curso'],
+      attributes: ['id', 'nome', 'cpf', 'data_carteira', 'data_curso'],
       include: {
         association: 'veiculo',
         attributes: ['placa'],

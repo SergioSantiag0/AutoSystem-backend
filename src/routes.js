@@ -4,6 +4,8 @@ import express from 'express';
 import UserController from './controllers/UserController';
 import SessionController from './controllers/SessionController';
 
+import SessionInstrutorController from './controllers/SessionInstrutorController';
+
 import VeiculoController from './controllers/VeiculoController';
 
 import InstrutorController from './controllers/InstrutorController';
@@ -27,6 +29,8 @@ routes.put('/users/:id', UserController.update);
 // Session
 routes.post('/session', SessionController.store);
 
+//Session instrutor
+routes.post('/sessionInstrutor', SessionInstrutorController.store);
 // Veiculos
 routes.post('/veiculos', VeiculoController.store);
 routes.get('/veiculos', VeiculoController.show);
@@ -57,6 +61,8 @@ routes.delete('/aulas/:id', AulaController.delete);
 
 // Agenda Instrutor
 routes.get('/Agenda/:instrutor_id', AgendaController.index);
+// Limpar agenda aluno
+routes.delete('/Agenda/:aluno_id', AgendaController.delete);
 
 // Exames
 routes.get('/exames', ExameController.show);

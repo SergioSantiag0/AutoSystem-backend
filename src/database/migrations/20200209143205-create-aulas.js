@@ -16,7 +16,7 @@ module.exports = {
         references: { model: 'alunos', key: 'id' },
         allowNull: false,
         onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
+        onDelete: 'CASCADE',
       },
       instrutor_id: {
         type: Sequelize.INTEGER,

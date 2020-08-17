@@ -52,6 +52,7 @@ class ExameController {
     if (!exames) {
       return res.status(404).json({ error: 'Não existem exames agendados' });
     }
+
     return res.json(exames);
   }
 
